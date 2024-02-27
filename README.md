@@ -2,7 +2,7 @@
 
 ### Key/Value secret has version1 and version2.
 
-### ** 1) Version 1**
+### **1) Version 1**
 
 ```yaml
 #Enable kv in default path
