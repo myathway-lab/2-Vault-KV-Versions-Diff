@@ -4,12 +4,15 @@
 ### **Version 1**
 
 ```yaml
+#Enable kv in default path
 myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault secrets enable kv
 Success! Enabled the kv secrets engine at: kv/
 
+#Enable kv in SRE_TEAM/
 myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault secrets enable --path=SRE_TEAM kv
 Success! Enabled the kv secrets engine at: SRE_TEAM/
 
+#Enable kv in SRE_TEAM-v1
 myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault secrets enable -version=1 --path=SRE_TEAM-v1 kv
 Success! Enabled the kv secrets engine at: SRE_TEAM-v1/
 ```
@@ -20,9 +23,11 @@ Success! Enabled the kv secrets engine at: SRE_TEAM-v1/
 ### **Version 2**
 
 ```yaml
+#Enable kv in DB_Team/ using version 2
 myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault secrets enable -version=2 --path=DB_Team kv
 Success! Enabled the kv secrets engine at: DB_Team/
 
+#Enable kv in SRE_TEAM-v2/ using version 2
 myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault secrets enable -version=2 --path=SRE_TEAM-v2 kv
 Success! Enabled the kv secrets engine at: SRE_TEAM-v2/
 
@@ -43,21 +48,13 @@ sys/            system       system_59797446       system endpoints used for con
 ![image](https://github.com/myathway-lab/2-Vault-KV-Versions-Diff/assets/157335804/6b459af8-59e4-485b-9156-82c1377badd0)
 
 
-```yaml
-myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault secrets enable --path=SRE_TEAM kv
-Success! Enabled the kv secrets engine at: SRE_TEAM/
-myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault secrets enable -version=1 --path=SRE_TEAM-v1 kv
-Success! Enabled the kv secrets engine at: SRE_TEAM-v1/
-myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault secrets enable -version=2 --path=SRE_TEAM-v2 kv
-Success! Enabled the kv secrets engine at: SRE_TEAM-v2/
-```
 
 ### Difference between Version1 & Version 2
 
 [Static secrets: Key/value secrets engine | Vault | HashiCorp Developer](https://developer.hashicorp.com/vault/tutorials/secrets-management/static-secrets)
 
 <aside>
-💡 **The [KV secrets engine v1](https://developer.hashicorp.com/vault/tutorials/secrets-management/static-secrets) does not provide a way to version or roll back secrets. This made it difficult to recover from unintentional data loss or overwrite when more than one user is writing at the same path.**
+💡 The KV secrets engine v1 does not provide a way to version or roll back secrets. This made it difficult to recover from unintentional data loss or overwrite when more than one user is writing at the same path.
 
 </aside>
 
@@ -65,7 +62,7 @@ Success! Enabled the kv secrets engine at: SRE_TEAM-v2/
 
 
 <aside>
-💡 **The KV secrets engine v2 can retain a configurable number of secret versions. This enables older versions' data to be retrievable in case of unwanted deletion or updates of the data. In addition, its *Check-and-Set* operations can be used to protect the data from being overwritten unintentionally.**
+💡 The KV secrets engine v2 can retain a configurable number of secret versions. This enables older versions' data to be retrievable in case of unwanted deletion or updates of the data. In addition, its *Check-and-Set* operations can be used to protect the data from being overwritten unintentionally.
 
 </aside>
 
