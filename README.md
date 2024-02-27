@@ -2,7 +2,7 @@
 
 ### Key/Value secret has version1 and version2.
 
-### **Version 1**
+### ** 1) Version 1**
 
 ```yaml
 #Enable kv in default path
@@ -21,7 +21,7 @@ Success! Enabled the kv secrets engine at: SRE_TEAM-v1/
 ![image](https://github.com/myathway-lab/2-Vault-KV-Versions-Diff/assets/157335804/eaeb5e6b-b9d6-429d-b907-14d9ffaae54d)
 
 
-### **Version 2**
+### **2) Version 2**
 
 ```yaml
 #Enable kv in DB_Team/ using version 2
@@ -50,7 +50,7 @@ sys/            system       system_59797446       system endpoints used for con
 
 
 
-### Difference between Version1 & Version 2
+### 3) Difference between Version1 & Version 2
 
 [Static secrets: Key/value secrets engine | Vault | HashiCorp Developer](https://developer.hashicorp.com/vault/tutorials/secrets-management/static-secrets)
 
