@@ -1,6 +1,7 @@
 ## 2- Vault KV Secret Engine Versions Difference
 
-## Key/Value secret has version1 and version2.
+### Key/Value secret has version1 and version2.
+
 ### **Version 1**
 
 ```yaml
