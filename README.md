@@ -1,8 +1,18 @@
 ## Vault KV Secret Engine Versions Difference
+<br>
 
-### Key/Value secret has version1 and version2.
+## Summary  
+**Key/Value KV secret has version1 and version2.** <br> 
+**We will discuss the difference between KV version1 & version2.**
+
+<br>
+
 
 ### **1) Version 1**
+
+**We can enable kv version1 as below.**
+
+<br>
 
 ```yaml
 #Enable kv in default path
@@ -20,8 +30,13 @@ Success! Enabled the kv secrets engine at: SRE_TEAM-v1/
 
 ![image](https://github.com/myathway-lab/2-Vault-KV-Versions-Diff/assets/157335804/eaeb5e6b-b9d6-429d-b907-14d9ffaae54d)
 
+<br>
 
 ### **2) Version 2**
+
+**If we want to use KV version2, we need to manually mention "-version=2" as below.**
+
+<br>
 
 ```yaml
 #Enable kv in DB_Team/ using version 2
@@ -48,24 +63,22 @@ sys/            system       system_59797446       system endpoints used for con
 
 ![image](https://github.com/myathway-lab/2-Vault-KV-Versions-Diff/assets/157335804/6b459af8-59e4-485b-9156-82c1377badd0)
 
-
+<br>
 
 ### 3) Difference between Version1 & Version 2
 
 [Static secrets: Key/value secrets engine | Vault | HashiCorp Developer](https://developer.hashicorp.com/vault/tutorials/secrets-management/static-secrets)
 
-<aside>
-💡 The KV secrets engine v1 does not provide a way to version or roll back secrets. This made it difficult to recover from unintentional data loss or overwrite when more than one user is writing at the same path.
+**The KV secrets engine v1 does not provide a way to version or roll back secrets. This made it difficult to recover from unintentional data loss or overwrite when more than one user is writing at the same path.**
 
-</aside>
 
 ![image](https://github.com/myathway-lab/2-Vault-KV-Versions-Diff/assets/157335804/fb539ae1-1856-42df-b9ae-a725b8105a5d)
 
+<br>
+ 
+**The KV secrets engine v2 can retain a configurable number of secret versions. This enables older versions' data to be retrievable in case of unwanted deletion or updates of the data. In addition, its *Check-and-Set* operations can be used to protect the data from being overwritten unintentionally.**
 
-<aside>
-💡 The KV secrets engine v2 can retain a configurable number of secret versions. This enables older versions' data to be retrievable in case of unwanted deletion or updates of the data. In addition, its *Check-and-Set* operations can be used to protect the data from being overwritten unintentionally.
 
-</aside>
 
 ![image](https://github.com/myathway-lab/2-Vault-KV-Versions-Diff/assets/157335804/815d3d05-9ea5-4549-ab65-fd79d641cf17)
 
@@ -75,6 +88,12 @@ sys/            system       system_59797446       system endpoints used for con
 
 ![image](https://github.com/myathway-lab/2-Vault-KV-Versions-Diff/assets/157335804/a26b46d7-d7ec-436b-84e4-6e5f1325fbd7)
 
+<br>
+
+### 4) CLI usage difference
+
+
+**API endpoint that the CLI command invokes are slightly different beteween KV v1 and KV v2.**
 
 ```yaml
 myathway@DESKTOP-QCOTPM5:/mnt/c/WINDOWS/system32$ vault kv get SRE_TEAM-v1/user1
@@ -103,7 +122,7 @@ Key     Valueygen
 name    myamyagen
 ```
 
-**API endpoint that the CLI command invokes are slightly different beteween KV v1 and KV v2.**
+
 
 **The following table lists the `vault kv` subcommands and their respecting API endpoint. This assumes that the KV secrets engine is enabled at `secret/`.**
 
